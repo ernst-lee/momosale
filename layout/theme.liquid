@@ -210,8 +210,13 @@
     
     {% section 'top-header' %}	
     <div id="sb-site">
-    	{% section 'header' %}
+      {% section 'header' %}
+      <div class="inner-conts" id="sb-site-inner">
+        {{ content_for_layout }}
+        {% section 'footer' %}
+      </div>
     </div>
+    {% section 'slidebar' %}
     {{ content_for_layout }}
   </body>
 </html>  
