@@ -191,7 +191,18 @@
       <img style="max-width: 100%;" src="{{'topa.png' | asset_url }}" alt="">
     </div>
     
-    
+    <script>
+       gotop.onclick = function(){
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
+       }
+       window.onscroll = function(){
+          if(document.documentElement.scrollTop > 300){
+              gotop.style.width = "30px"
+          }else{
+              gotop.style.width = "0"
+          }
+       }
+	</script>
   </head>
   <body>
     {{ content_for_layout }}
