@@ -66,7 +66,9 @@
           	  <li class="hovline"><a class="mainHeaderNavColor" href="{{ link.url }}">{{ link.title | escape }}</a></li>		
           	{%- endif -%}
           {%- endfor -%}
-          
+          <li class="nav-search">
+            <a href="#" id="toggle-search"><span id="x_iconSearch" class="mainHeaderNavColor icon-search"></span></a>
+          </li>
         </ul>
       </nav>	
       {%- endif -%}
