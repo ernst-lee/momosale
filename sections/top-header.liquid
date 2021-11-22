@@ -1,9 +1,7 @@
 <div class="dingbufudong" style="position: fixed;top: 0;">
   <section class="tongimg" id="fudddimg">
     <div class="widget sidebanner">
-      <a href="{{ section.settings.banner_link }}">
-        <img src="image/image-tongadbanner_5e3e4ba09faeb.gif">
-      </a>
+      <a href="{{ section.settings.banner_link }}"><img src="{{ section.settings.banner_image | img_url: '1500x'}}" loading="lazy" alt="{{ section.settings.image.alt | escape }}"></a>
     </div>
   </section>
   <header id="mainHeader" class="wrapper logo-center">
