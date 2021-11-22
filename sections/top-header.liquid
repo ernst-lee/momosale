@@ -22,7 +22,9 @@
       </div>
       <h1 class="amat">
         <a href="{{ routes.root_url }}" id="logo">
-          
+          {%- if section.settings.logo != blank -%}
+          {%- else -%}
+          {%- endif -%} 
         </a>
       </h1>
       <nav class="crim">
