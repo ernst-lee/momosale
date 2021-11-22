@@ -209,7 +209,9 @@
     <div id="resou" style="display: none;"></div>
     
     {% section 'top-header' %}	
-    <div id="sb-site"></div>
+    <div id="sb-site">
+    	{% section 'header' %}
+    </div>
     {{ content_for_layout }}
   </body>
 </html>  
