@@ -39,6 +39,9 @@
       <nav class="crim">
         <ul>
           {%- for link in section.settings.menu.links -%}
+          	{%- if link.links != blank -%}
+          	{%- else -%}
+          	{%- endif -%}
           {%- endfor -%}
         </ul>
       </nav>	
