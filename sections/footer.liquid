@@ -20,9 +20,8 @@
         {%- if section.settings.menu != blank -%}
           <ul>
             {%- for link in section.settings.menu.links -%}
+            <li><a href="{{ link.url }}">プライバシーポリシー</a></li>
             {%- endfor -%}
-            <li><a href="#">プライバシーポリシー</a></li>
-            <li><a href="#">特定商取引法に基づく表記</a></li>
           </ul>
         {%- endif -%} 
       </div>
