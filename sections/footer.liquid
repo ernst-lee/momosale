@@ -19,6 +19,8 @@
         </h1>
         {%- if section.settings.menu != blank -%}
           <ul>
+            {%- for link in section.settings.menu.links -%}
+            {%- endfor -%}
             <li><a href="#">プライバシーポリシー</a></li>
             <li><a href="#">特定商取引法に基づく表記</a></li>
           </ul>
