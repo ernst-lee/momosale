@@ -10,7 +10,9 @@
                   <ul id="appsItemCategoryTag">
                   	{%- for childlink in link.links -%}
                     <li class="appsItemCategoryTag_child">
-                    	
+                    	{%- if childlink.links == blank -%}
+                      	{%- else -%}
+                      	{%- endif -%} 
                     </li>
                     {%- endfor -%} 	
                   </ul>
