@@ -36,7 +36,11 @@
     </h1>
     {%- if section.settings.menu != blank -%}
       <nav class="crim">
-        <ul></ul>
+        <ul>
+          {%- for link in section.settings.menu.links -%}
+            
+          {%- endfor -%}
+        </ul>
       </nav>
     {%- endif -%}
     <nav class="crim">
