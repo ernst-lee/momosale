@@ -41,7 +41,8 @@
             {%- if link.links != blank -%}
           	  <li class="hovline">
                 <div id="category-menu" class="clearfix">
-                	
+                  <span class="mainHeaderNavColor">{{ link.title | escape }}</span>
+                  <div class="category-list"></div>
                 </div>
               </li>
           	{%- else -%}
