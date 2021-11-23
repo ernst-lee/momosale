@@ -48,4 +48,29 @@
        $.slidebars();
      });
   }) (jQuery);
+  
+  $(function () {
+  	$('.sb-toggle-right').on('click touchstart', function(){
+      $('.menu-trigger').toggleClass('cls');
+      $('#sb-site').toggleClass('side-open');
+    });
+     $('#js__overlay').on('click touchstart', function(){
+       $('.menu-trigger').removeClass('cls');
+       $('#sb-site').removeClass('side-open');
+     });
+  });
 </script>
+
+{% schema %}
+{
+	"name": "t:sections.slidebar.name",
+	"settings": [ 
+		{
+			"type": "link_list",
+			"id": "menu",
+			"default": "main-menu",
+			"label": "t:sections.slidebar.settings.menu.label"
+		}
+	]
+}
+{% endschema %}
