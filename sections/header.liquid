@@ -44,7 +44,9 @@
                   <span class="mainHeaderNavColor">{{ link.title | escape }}</span>
                   <div class="category-list">
                     <ul id="appsItemCategoryTag" style="background-color: rgb(255, 255, 255);">
-                    	
+                       {%- for childlink in link.links -%}
+                      	
+                       {%- endfor -%} 	
                     </ul>
                   </div>
                 </div>
