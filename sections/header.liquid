@@ -39,7 +39,11 @@
         <ul>
           {%- for link in section.settings.menu.links -%}
             {%- if link.links != blank -%}
-          <li class="hovline"></li>
+          	  <li class="hovline">
+                <div id="category-menu" class="clearfix">
+                	
+                </div>
+              </li>
           	{%- else -%}
           	{%- endif -%}
           {%- endfor -%}
