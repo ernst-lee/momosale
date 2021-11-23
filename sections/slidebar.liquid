@@ -2,7 +2,10 @@
   {%- if section.settings.menu != blank -%}
   	<nav class="crim">
       {%- for link in section.settings.menu.links -%}
-      	
+      	{%- if link.links != blank -%}
+      <li></li>
+      	{%- else -%}
+      	{%- endif -%}
       {%- endfor -%}
       <ul>
         <li>
