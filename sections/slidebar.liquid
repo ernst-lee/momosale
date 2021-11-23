@@ -3,7 +3,9 @@
   	<nav class="crim">
       {%- for link in section.settings.menu.links -%}
       	{%- if link.links != blank -%}
-      <li></li>
+      		<li>
+              <div id="category-menu"></div>
+      		</li>
       	{%- else -%}
       	{%- endif -%}
       {%- endfor -%}
