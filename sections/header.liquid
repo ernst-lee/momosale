@@ -22,7 +22,7 @@
     <h1 class="amat">
       <a href="{{ routes.root_url }}" id="logo">
         {%- if section.settings.logo != blank -%}
-        	{%- assign image_size = section.settings.logo_width | append: 'x' -%}
+           {%- assign image_size = section.settings.logo_width | append: 'x' -%}
         {%- else -%}
            <span class="h2">{{ shop.name }}</span>	
         {%- endif -%} 
