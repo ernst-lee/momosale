@@ -8,7 +8,8 @@
               	<span class="mainHeaderNavColor">{{ link.title | escape }}</span>	
                 <div class="category-list">
                   <ul id="appsItemCategoryTag">
-                  	
+                  	{%- for childlink in link.links -%}
+                    {%- endfor -%} 	
                   </ul>
                 </div>
               </div>
