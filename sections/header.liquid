@@ -124,6 +124,8 @@
   });
   
   $(document).click(function(event) {
-  	
+    if (!$.contains($("div#search")[0], event.target)) { 
+      $("div#search").slideUp();
+    }
   });
 </script>
