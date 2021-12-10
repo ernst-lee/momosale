@@ -1,0 +1,63 @@
+.dingbufudong{
+    display: none;
+    background: white;
+    z-index: 99;
+}
+@media only screen and (max-width: 880px){
+    .itemTitle{
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .index .item {
+        margin-bottom: 20px !important;
+    }
+    .index .item .itemTitle h2{
+        margin-bottom: 0px !important;
+    }
+    .dingbufudong{
+        display: block;
+    }
+}
+.sb-slidebar .crim{
+    margin-top: 62px;
+}
+.related-text{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+}
+.fudongkde>header{
+    display: none;
+}
+.fudongkde{
+    display: none;
+}
+.mentdet{
+    display: none;
+}
+@media only screen and (max-width: 880px){
+    .fudongkde{
+        position: fixed;
+        z-index: 999999;
+        background: white;
+        left: 0;
+        top: 0;
+    }
+    .fudongkde>header{
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .mentdet{
+    display: block;
+    margin: 0 auto;
+    }
+}

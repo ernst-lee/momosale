@@ -1,0 +1,95 @@
+<header id="mainHeader" class="wrapper logo-center">
+    <div id="shopHeader" class="clearfix">
+      <h1 class="amat">
+        <a href="{{ routes.root_url }}" id="logo">
+            {%- if section.settings.logo_image != blank -%}
+                <img class="logoImage" src="{{ section.settings.logo_image | img_url: '846x273' }}" alt="{{ 'sections.header.logo_alt' | t }}">
+            {%- else -%}
+                <img class="logoImage" src="{{ '99f73b9431e1daa02dd3034a0fe977b5.png' | asset_url }}" alt="{{ 'sections.header.logo_alt' | t }}">
+            {%- endif -%}
+        </a>
+      </h1>
+      <nav class="crim">
+        <ul>
+            {%- if section.settings.top_menu != blank -%}
+            {%- for link in section.settings.top_menu.links -%}
+            <li class="hovline">
+                {%- if link.links != blank -%}
+                    <div id="category-menu" class="clearfix">
+                        <span class="mainHeaderNavColor">{{ link.title | escape }}</span>
+                        <div class="category-list">
+                            <ul id="appsItemCategoryTag">
+                                {%- for childlink in link.links -%}
+                                    <li class="appsItemCategoryTag_child">
+                                        <a href="{{ childlink.url }}" class="mainHeaderNavColor">{{ childlink.title | escape }}</a>
+                                        {%- if childlink.links != blank -%}
+                                        <ul class="appsItemCategoryTag_lowerchild">
+                                            {%- for grandchildlink in childlink.links -%}
+                                            <li>
+                                                <a href="{{ grandchildlink.url }}" class="mainHeaderNavColor appsItemCategoryTag_lowerLink">{{ grandchildlink.title | escape }}</a>
+                                            </li>
+                                            {%- endfor -%}
+                                        </ul>
+                                        {%- endif -%}
+                                    </li>
+                                {%- endfor -%}
+                            </ul>
+                        </div>
+                    </div>
+                {%- else -%}
+                    <a class="mainHeaderNavColor" href="{{ link.url }}">{{ link.title | escape }}</a>
+                {% endif %}
+            </li>
+            {%- endfor -%}
+            {%- endif -%}
+
+            <li class="nav-search">
+                <a href="#" id="toggle-search">
+                <span id="x_iconSearch" class="mainHeaderNavColor icon-search"></span>
+                </a>
+            </li>
+            <li>
+                <div id="baseMenu"> 
+                    {% render 'image-icon-list' %}
+                </div>
+            </li>
+
+        </ul>
+      </nav>
+    </div>
+</header>
+
+<div id="search" class="searchbox">
+    <form id="x_itemSearchForm" class="itemSearch__form" action="{{ routes.search_url }} method="get">
+    <input 
+        class="itemSearch__field yumin"
+        type="text"
+        name="q"
+        id="s"
+        placeholder="{{ 'general.search.search' | t }}"
+        value="{{ search.terms | escape }}"
+        />
+    <button class="itemSearch__btn" type="submit">
+        <span id="x_iconSearch" class="mainHeaderNavColor icon-search"></span>
+    </button>
+    </form>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.div_header.name",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "t:sections.div_header.settings.logo_image.label"
+    },
+    {
+        "type": "link_list",
+        "id": "top_menu",
+        "default": "main-menu",
+        "label": "t:sections.div_header.settings.top_menu.label"
+    }
+  ]
+}
+{% endschema %}

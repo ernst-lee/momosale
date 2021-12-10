@@ -40,7 +40,7 @@
       "previous": "前のページ"
     },
     "search": {
-      "search": "検索"
+      "search": "SEARCH"
     },
     "cart": {
       "view": "カートを見る ({{ count }})",
@@ -53,6 +53,10 @@
       "success_message": "リンクがクリップボードにコピーされました",
       "close": "共有を閉じる"
     }
+  },
+  "base":{
+    "base_title":"BASE",
+    "base_alt":"ネットショップを開設するならBASE"
   },
   "date_formats": {
     "month_year": "%Y年%-m月%"
@@ -186,6 +190,8 @@
   "sections": {
     "header": {
       "announcement": "告知",
+      "cart_alt":"shopping cart",
+      "logo_alt":"MoMoSale - ド定番から最新のものまで網羅！ストリート系ファッション専門店",
       "menu": "メニュー",
       "cart_count": {
         "one": "{{ count }}個のアイテム",
@@ -221,7 +227,9 @@
     },
     "footer": {
       "payment": "決済方法",
-      "social_placeholder": "SNSでフォローしてください！"
+      "social_placeholder": "SNSでフォローしてください！",
+      "alt":"MoMoSale - ド定番から最新のものまで網羅！ストリート系ファッション専門店",
+      "record_no":"© MoMoSale - ド定番から最新のものまで網羅！ストリート系ファッション専門店 All rights reserved."
     },
     "featured_blog": {
       "view_all": "すべてを表示する",

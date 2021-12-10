@@ -1,150 +1,85 @@
-<div class="overlay" id="js__overlay"></div>
-
-<span id="max_page" style="display: none;">300</span>
-<span id="next_page" style="display: none;">2</span>
-
-<header id="mainHeader" class="wrapper logo-center">
-  <div id="shopHeader" class="clearfix">
-    <div id="baseMenu">
-      <ul class="clearfix">
-        <li class="base">
-          <a target="_blank" href="{{ routes.root_url }}">
-            <img src="{{'base.png' | asset_url }}" alt="BASE" title="BASE" height="30">
-          </a>
-        </li>
-        <li class="cart">
-          <a href="{{ routes.cart_url }}">
-            <img src="{{'cart.png' | asset_url }}" alt="shopping cart" height="30">
-          </a>
-        </li>
-      </ul>
-    </div>
-    <h1 class="amat">
-      <a href="{{ routes.root_url }}" id="logo">
-        {%- if section.settings.logo != blank -%}
-           {%- assign image_size = section.settings.logo_width | append: 'x' -%}
-           <img srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-            src="{{ section.settings.logo | img_url: image_size }}"
-            loading="lazy"
-            class="logoImage"
-            alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
-           > 	
+<div class="dingbufudong" style="position: fixed;top: 0;">
+    <!--手机端顶部横幅-->
+    <section class="tongimg" id="fudddimg">
+      <div class="widget sidebanner">
+        <a href="
+            {%- if section.settings.banner_image_url != blank -%}
+            {{ section.settings.banner_image_url }}
+            {%- endif -%}
+        ">
+        {%- if section.settings.banner_image != blank -%}
+            <img src="{{ section.settings.banner_image | img_url: '1500x140' }}">
         {%- else -%}
-           <span class="h2">{{ shop.name }}</span>	
-        {%- endif -%} 
-      </a>
-    </h1>
-    {%- if section.settings.menu != blank -%}
-      <nav class="crim">
-        <ul>
-          {%- for link in section.settings.menu.links -%}
-            {%- if link.links != blank -%}
-          	  <li class="hovline">
-                <div id="category-menu" class="clearfix">
-                  <span class="mainHeaderNavColor">{{ link.title | escape }}</span>
-                  <div class="category-list">
-                    <ul id="appsItemCategoryTag" style="background-color: rgb(255, 255, 255);">
-                       {%- for childlink in link.links -%}
-                      	<li class="appsItemCategoryTag_child">
-                      	  {%- if childlink.links == blank -%}
-                          	<a href="{{ childlink.url }}" class="mainHeaderNavColor">{{ childlink.title | escape }}</a>
-                          {%- else -%}
-                          	<a href="{{ childlink.url }}" class="mainHeaderNavColor">{{ childlink.title | escape }}</a>
-                          	<ul class="appsItemCategoryTag_lowerchild">
-                          	  {%- for grandchildlink in childlink.links -%}
-                              	<li><a href="{{ grandchildlink.url }}" class="mainHeaderNavColor appsItemCategoryTag_lowerLink">{{ grandchildlink.title | escape }}</a></li>
-                              {%- endfor -%}
-                          	</ul>
-                          {%- endif -%} 
-                      	</li>
-                       {%- endfor -%} 	
-                    </ul>
-                  </div>
-                </div>
-              </li>
-          	{%- else -%}
-          	  <li class="hovline"><a class="mainHeaderNavColor" href="{{ link.url }}">{{ link.title | escape }}</a></li>
-          	{%- endif -%}
-          {%- endfor -%}
-          <li class="nav-search">
-          	<a href="#" id="toggle-search"><span id="x_iconSearch" class="mainHeaderNavColor icon-search"></span></a>
-          </li>
-          <li>
-            <div id="baseMenu"> 
-              <ul class="clearfix"> 
-                <li class="base" >
-                  <a target="_blank" href="{{ routes.root_url }}">
-                    <img src="{{'base.png' | asset_url }}" alt="BASE" title="BASE" height="30">
-                  </a>
-                </li> 
-                <li class="cart">
-                  <a href="{{ routes.cart_url }}">
-                    <img src="{{'cart.png' | asset_url }}" alt="shopping cart" height="30">
-                  </a>
-                </li> 
-              </ul> 
-            </div>
-          </li>
-        </ul>
-      </nav>
-    {%- endif -%}
-    <div class="sb-toggle-right" id="slide-nav-open">
-      <a class="menu-trigger" href="#">
-        <span></span>
-        <span></span>
-        <span></span>
+          <img src="{{ 'image-tongadbanner_5e3e4ba09faeb.gif' | asset_url }}">
+        {%- endif -%}
+        </a>
+      </div>
+    </section>
+    
+    <!--手机端头部-->
+    <header id="mainHeader" class="wrapper logo-center">
+      <div id="shopHeader" class="clearfix">
+        <div id="baseMenu">
+          {% render 'image-icon-list' %}
+        </div>
+        <h1 class="amat">
+          <a href="{{ routes.root_url }}" id="logo">
+            {%- if section.settings.logo_image != blank -%}
+                <img class="logoImage" src="{{ section.settings.logo_image | img_url: '846x273' }}" alt="{{ 'sections.header.logo_alt' | t }}">
+            {%- else -%}
+                <img class="logoImage" src="{{ '99f73b9431e1daa02dd3034a0fe977b5.png' | asset_url }}" alt="{{ 'sections.header.logo_alt' | t }}">
+            {%- endif -%}
+          </a>
+        </h1>
+        
+        <div class="sb-toggle-right" id="slide-nav-open">
+          <a class="menu-trigger" href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </div>
+
+      </div>
+    </header>
+  </div>
+
+  <!--电脑端最上方banner-->
+  <section class="tongimg" id="fudddimg">
+    <div class="widget sidebanner">
+      <a href="
+        {%- if section.settings.banner_image_url != blank -%}
+            {{ section.settings.banner_image_url }}
+        {%- endif -%}
+      ">
+        {%- if section.settings.banner_image != blank -%}
+            <img src="{{ section.settings.banner_image | img_url: '1500x140' }}">
+        {%- else -%}
+            <img src="{{ 'image-tongadbanner_5e3e4ba09faeb.gif' | asset_url }}">
+        {%- endif -%}
       </a>
     </div>
-  </div>
-</header>
-<div id="search" class="searchbox">
-  <form id="x_itemSearchForm" class="itemSearch__form" action="{{ routes.search_url }}" method="get">
-    <input class="itemSearch__field yumin" type="text" name="q" placeholder="{{ 'general.search.search' | t }}" value=""/>
-    <input type="hidden" name="type" value="product">
-	<button class="itemSearch__btn" type="submit">
-      <span id="x_iconSearch" class="mainHeaderNavColor icon-search"></span>
-    </button>
-  </form>
-</div>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-  	 $("img[src*='1px']").parent("div").remove();
-  });
-  
-  $(document).on('click', 'a#toggle-search', function () {
-  	var search = $('div#search');
-    search.is(":visible") ? search.slideUp() : search.slideDown(function() { 
-    	search.find('input').focus();
-    });
-    $('body,html').animate({
-      scrollTop: 0
-    }, 500);
-    return false;
-  });
-  
-  $(document).click(function(event) {
-    if (!$.contains($("div#search")[0], event.target)) { 
-      $("div#search").slideUp();
-    }
-  });
-</script>
+  </section>
 
 {% schema %}
-{ 
+{
   "name": "t:sections.header.name",
-  "settings": [	
-	{
-		"type": "image_picker",
-		"id": "logo",
-		"label": "t:sections.header.settings.logo.label"
-	},
-	{
-		"type": "link_list",
-		"id": "menu",
-		"default": "main-menu",
-		"label": "t:sections.header.settings.menu.label"
-	}
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "t:sections.header.settings.logo_image.label"
+    },
+    {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "t:sections.header.settings.banner_image.label"
+    },
+    {
+        "type": "url",
+        "id": "banner_image_url",
+        "label": "t:sections.header.settings.banner_image_url.label"
+    }
   ]
 }
 {% endschema %}

@@ -1,0 +1,81 @@
+<div id="add_area">
+    {%- if section.settings.top_banner != blank -%}
+    <div id="visual">
+      <div class="slides">
+        <img src="{{ '5c276da8c125fe0afabffb3f2f21f18b.jpg' | asset_url }}">		
+      </div>
+      <div class="slides">
+        <img src="{{ '1px.png' | asset_url }}">	
+      </div>
+      <div class="slides">
+        <img src="{{ '1px.png' | asset_url }}">	
+      </div>
+      <div class="slides">
+        <img src="{{ '1px.png' | asset_url }}">	
+      </div>
+      <div class="slides">
+        <img src="{{ '1px.png' | asset_url }}">	
+      </div>
+      <div class="slides">
+        <img src="{{ '1px.png' | asset_url }}">	
+      </div>
+    </div>
+    {%- endif -%}
+
+    <div id="info" class="clearfix">
+      <div class="crim sec-ttl col-left">
+        <span class="bar"></span>
+      </div><div class="col-right">
+      <ul>
+        <li>
+            <div class="ttl yumin">
+              <a href="https://www.momosale.com/items/54121557">
+              ✿発送期間＆送料＆クーポン券のご利用
+              </a>													
+            </div>
+        </li>
+        <li>	
+            <div class="ttl yumin">
+                <a href="https://www.momosale.com/categories/2139682">
+                  ✿メンズファッション（ペアルック）
+                </a>													
+            </div>
+        </li>
+        <li>
+            <div class="ttl yumin">
+              ✿Black Fridayクーポンコード：black2021
+            </div>
+        </li>
+      </ul>
+      </div>
+    </div>
+
+    <div class="bnr">
+      <a href="https://www.momosale.com/categories/2139671">
+        <img src="https://base-ec2.akamaized.net/images/user/template/csqt1108/image-bnr_5eef6b0a86226.jpg">
+      </a>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.home-banner.name",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "top_banner",
+        "label": "t:sections.home-banner.settings.top_banner.label"
+    },
+    {
+        "type": "image_picker",
+        "id": "buttom_banner",
+        "label": "t:sections.home-banner.settings.buttom_banner.label"
+    },
+    {
+        "type": "url",
+        "id": "buttom_banner_url",
+        "label": "t:sections.home-banner.settings.buttom_banner_url.label"
+    }
+  ]
+}
+{% endschema %}

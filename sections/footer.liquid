@@ -1,113 +1,55 @@
 <footer id="mainFooter" class="wrapper clearfix">
-  <div class="footerInner yumin clearfix">
-    <div class="fLeft">
-      <div class="fLeftInner">
-        <h1 class="amat logo">
-          <a href="{{ routes.root_url }}">
-            {%- if section.settings.logo != blank -%}
-            	{%- assign image_size = section.settings.logo_width | append: 'x' -%}
-            	<img srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-                  src="{{ section.settings.logo | img_url: image_size }}"
-                  loading="lazy"
-                  class="logoImage"
-                  alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
-                 >	
-            {%- else -%}
-            	<span class="h2">{{ shop.name }}</span>
-            {%- endif -%} 
-          </a>
-        </h1>
-        {%- if section.settings.menu != blank -%}
+    <div class="footerInner yumin clearfix">
+      <div class="fLeft">
+        <div class="fLeftInner">
+          <h1 class="amat logo">
+            <a href="{{ routes.root_url }}">
+                {%- if section.settings.logo_image != blank -%}
+                <img class="logoImage" src="{{ section.settings.logo_image | img_url:'master' }}" alt="{{ 'sections.footer.alt' | t }}">
+                {%- else -%}
+                <img class="logoImage" src="{{ '99f73b9431e1daa02dd3034a0fe977b5.png' | asset_url }}" alt="{{ 'sections.footer.alt' | t }}">
+                {%- endif -%}
+            </a>
+          </h1>
           <ul>
-            {%- for link in section.settings.menu.links -%}
-            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- if section.settings.footer_link != blank -%}
+            {%- for link in section.settings.footer_link.links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
             {%- endfor -%}
+            {%- endif -%}
           </ul>
-        {%- endif -%} 
+        </div>
       </div>
-    </div>
-    <div class="fRight">
-      <div class="fRightInner">
-        <div class="social">
-          <div class="inner-conts">
-            <ul class="clearfix">
-              <li>
-                <a href="{{ settings.social_facebook_link }}" target="_blank">
-                  <img src="{{'fbicon.png' | asset_url }}" height="30" width="30">
-                </a>
-              </li>
-              <li class="tw">
-                <a href="{{ settings.social_twitter_link }}" target="_blank">
-                  <img src="{{'twicon.png' | asset_url }}" height="30" width="30">
-                </a>
-              </li>
-              <li>
-                <a href="{{ settings.social_instagram_link }}" target="_blank">
-                  <img src="{{'igicon2018.png' | asset_url }}" height="30" width="30">
-                </a>
-              </li>
-            </ul>
+
+      <div class="fRight">
+        <div class="fRightInner">
+          <div class="social">
+            <div class="inner-conts">
+            {% render 'propaganda' %}
           </div>
         </div>
       </div>
+      </div>
+
     </div>
-  </div>
-  <div class="copyright crim"><small>{{ section.settings.subtext }}</small></div>
+    <div class="copyright crim"><small>{{ 'sections.footer.record_no' | t }}.</small></div>
 </footer>
+
 {% schema %}
-{ 
-	"name": "t:sections.footer.name",
-	"settings": [ 
-		{
-			"type": "image_picker",
-			"id": "logo",
-			"label": "t:sections.header.settings.logo.label"
-		},
-		{
-			"type": "range",
-			"id": "logo_width",
-			"min": 50,
-			"max": 250,
-			"step": 10,
-			"default": 100,
-			"unit": "t:sections.header.settings.logo_width.unit",	
-			"label": "t:sections.header.settings.logo_width.label"
-		},
-		{
-			"type": "link_list",
-			"id": "menu",
-			"default": "footer",
-			"label": "t:sections.footer.blocks.link_list.settings.menu.label",
-			"info": "t:sections.footer.blocks.link_list.settings.menu.info"
-		},
-		{
-			"type": "richtext",
-			"id": "subtext",
-			"default": "<p>Share store details, promotions, or brand content with your customers.</p>",
-			"label": "t:sections.footer.blocks.text.settings.subtext.label"
-		},
-		{ 
-			"type": "header",
-			"content": "t:sections.footer.settings.header__2.content",
-			"info": "t:sections.footer.settings.header__2.info"
-		},
-		{
-        	"type": "checkbox",
-        	"id": "show_social",
-        	"default": false,
-        	"label": "t:sections.footer.settings.show_social.label"
-        },
-		{
-          "type": "header",
-          "content": "t:sections.footer.settings.header__5.content",
-          "info": "t:sections.footer.settings.header__6.info"
-        },
-		{
-          "type": "checkbox",
-          "id": "enable_language_selector",
-          "default": true,
-          "label": "t:sections.footer.settings.enable_language_selector.label"
-        }
-	]
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "t:sections.footer.settings.logo_image.label"
+    },
+    {
+        "type": "link_list",
+        "id": "footer_link",
+        "default": "footer",
+        "label": "t:sections.footer.settings.footer_link.label"
+    }
+  ]
 }
 {% endschema %}
