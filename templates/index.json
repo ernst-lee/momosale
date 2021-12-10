@@ -9,7 +9,8 @@
     "main_product": {
       "type": "home-product",
       "settings": {
-
+        "collection": "all",
+        "products_per_page": 24
       }
     }
   },

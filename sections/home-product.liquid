@@ -1,4 +1,7 @@
+{%- if section.settings.collection.products.size > 0 -%}
 <section id="mainContent" class="wrapper clearfix index">
+  {%- paginate section.settings.collection.products by section.settings.products_per_page -%}
+  {%- for product in section.settings.collection.products -%}
   <div class="ItemListInner crim">
     <div class="item">
       <div class="itemImg">
@@ -27,4 +30,33 @@
       </a>
     </div>
   </div>
+  {%- endfor -%}
+  {%- if paginate.pages > 1 -%}
+      {% render 'paginate', paginate: paginate, anchor: '#mainContent' %}
+  {%- endif -%}
+  {%- endpaginate -%}
 </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "t:sections.index_home.name",
+    "settings": 
+    [
+		{
+		  "type": "collection",
+      "id": "collection",
+		  "label": "t:sections.index_home.settings.collection.label"
+		},
+		{
+		   "type": "range",
+		   "id": "products_per_page",
+		   "min": 6,
+       "max": 60,
+		   "step": 1,
+		   "default": 24,
+		   "label": "t:sections.index_home.settings.products_per_page.label"
+		}
+	]
+  }
+{% endschema %}

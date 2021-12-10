@@ -215,6 +215,17 @@
     }
   },
   "sections": {
+    "index_home": {
+      "name": "主页产品",
+      "settings": {
+        "collection": {
+          "label": "主页展示产品所属分类"
+        },
+        "products_per_page": {
+          "label": "每页产品数"
+        }
+      }
+    },
     "home-banner":{
       "name":"主页宣传区",
       "settings":{
@@ -229,6 +240,9 @@
         },
         "buttom_banner_url":{
           "label":"宣传区底部横幅链接"
+        },
+        "main_menu":{
+          "label":"宣传菜单"
         }
       }
     },
