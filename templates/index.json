@@ -3,7 +3,8 @@
     "home_banber": {
       "type": "home-banner",
       "settings": {
-
+        "main_menu": "",
+        "buttom_banner_url": ""
       }
     },
     "main_product": {

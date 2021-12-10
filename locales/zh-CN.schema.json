@@ -226,23 +226,23 @@
         }
       }
     },
-    "home-banner":{
-      "name":"主页宣传区",
-      "settings":{
-        "top_banner":{
-          "label":"宣传区上方横幅"
+    "home-banner": {
+      "name": "主页宣传区",
+      "settings": {
+        "top_banner": {
+          "label": "宣传区上方横幅"
         },
-        "top_banner_url":{
-          "label":"宣传区上方横幅链接"
+        "top_banner_url": {
+          "label": "宣传区上方横幅链接"
         },
-        "buttom_banner":{
-          "label":"宣传区底部横幅"
+        "buttom_banner": {
+          "label": "宣传区底部横幅"
         },
-        "buttom_banner_url":{
-          "label":"宣传区底部横幅链接"
+        "buttom_banner_url": {
+          "label": "宣传区底部横幅链接"
         },
-        "main_menu":{
-          "label":"宣传菜单"
+        "main_menu": {
+          "label": "宣传菜单"
         }
       }
     },
@@ -263,11 +263,11 @@
         "logo_image": {
           "label": "手机端logo 图片"
         },
-        "banner_image":{
-          "label":"顶部横幅图片"
+        "banner_image": {
+          "label": "顶部横幅图片"
         },
-        "banner_image_url":{
-          "label":"顶部横幅链接"
+        "banner_image_url": {
+          "label": "顶部横幅链接"
         }
       }
     },
@@ -277,14 +277,14 @@
         "logo_image": {
           "label": "电脑端logo 图片"
         },
-        "top_menu":{
-          "label":"电脑端顶部菜单"
+        "top_menu": {
+          "label": "电脑端顶部菜单"
         },
-        "banner_image":{
-          "label":"顶部横幅图片"
+        "banner_image": {
+          "label": "顶部横幅图片"
         },
-        "banner_image_url":{
-          "label":"顶部横幅链接"
+        "banner_image_url": {
+          "label": "顶部横幅链接"
         }
       }
     },
