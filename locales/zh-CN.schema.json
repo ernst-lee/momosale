@@ -349,9 +349,9 @@
         }
       }
     },
-    "sb_skudebar":{
-      "name":"手机端右侧边栏菜单",
-      "settings":{
+    "sb_skudebar": {
+      "name": "手机端右侧边栏菜单",
+      "settings": {
         "skudebar_link": {
           "label": "右侧边栏菜单"
         }
