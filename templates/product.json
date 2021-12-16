@@ -1,13 +1,13 @@
 {
-    "sections": {
-      "main": {
-        "type": "main-product",
-        "settings": {
-            "show_share_buttons": true
-        }
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_share_buttons": true
       }
-    },
-    "order": [
-      "main"
-    ]
+    }
+  },
+  "order": [
+    "main"
+  ]
 }
