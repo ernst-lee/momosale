@@ -384,6 +384,14 @@
           "label": "展示分类"
         }
       }
+    },
+    "main-product": {
+      "name": "产品信息",
+      "settings": {
+        "show_share_buttons": {
+          "label": "显示社交分享按钮"
+        }
+      }
     }
   }
 }
