@@ -1,0 +1,121 @@
+<h3 class="mainHeaderNavColor titleForSearchResult yumin">
+  {{ 'templates.search.result_title' | t: terms: search.terms }}
+  <span class="bar"></span>
+</h3>
+
+{%- paginate search.results by section.settings.products_per_page -%}
+<section id="mainContent" class="wrapper clearfix index">
+  <div class="ItemListInner crim">
+
+    {%- if search.results.size == 0 -%}
+      <div id="paradis-law" class="area" >
+        <div id="law" style="text-align:center">
+          {{ 'templates.search.no_results' | t: terms: search.terms }}
+        </div>
+      </div>
+    {%- else -%}
+      {%- for item in search.results -%}
+        {%- case item.object_type -%}
+          {%- when 'product' -%}
+            {% render 'main-product-card',
+              product_card_product: item
+            %}
+        {%- endcase -%}	
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+{%- if paginate.pages > 1 -%}
+      {% render 'paginate', paginate: paginate, anchor: '#mainContent' %}
+{%- endif -%}
+{%- endpaginate -%}
+
+{% schema %}
+{ 
+	"name": "t:sections.main-search.name",
+	"tag": "section",
+	"class": "spaced-section",
+	"settings": [
+		{
+          "type": "range",
+          "id": "products_per_page",
+          "min": 2,
+          "max": 60,
+          "step": 1,
+          "default": 24,
+          "label": "t:sections.collection_products.settings.products_per_page.label"
+        },
+		{
+          "type": "header",
+          "content": "t:sections.main-search.settings.header__1.content"
+        },
+		{
+          "type": "select",
+          "id": "image_ratio",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "t:sections.main-search.settings.image_ratio.options__1.label"
+            },
+            {
+              "value": "portrait",
+              "label": "t:sections.main-search.settings.image_ratio.options__2.label"
+            },
+            {
+              "value": "square",
+              "label": "t:sections.main-search.settings.image_ratio.options__3.label"
+            }
+          ],
+          "default": "adapt",
+          "label": "t:sections.main-search.settings.image_ratio.label"
+        },
+		{
+          "type": "checkbox",
+          "id": "show_secondary_image",
+          "default": false,
+          "label": "t:sections.main-search.settings.show_secondary_image.label"
+        },
+		{
+          "type": "checkbox",
+          "id": "add_image_padding",
+          "default": false,
+          "label": "t:sections.main-search.settings.add_image_padding.label"
+        },
+		{
+          "type": "checkbox",
+          "id": "show_image_outline",
+          "default": true,
+          "label": "t:sections.main-search.settings.show_image_outline.label"
+        },
+		{
+          "type": "checkbox",
+          "id": "show_vendor",
+          "default": false,
+          "label": "t:sections.main-search.settings.show_vendor.label"
+        },
+		{
+          "type": "checkbox",
+          "id": "show_rating",
+          "default": false,
+          "label": "t:sections.main-search.settings.show_rating.label",
+          "info": "t:sections.main-search.settings.show_rating.info"
+        },
+		{
+          "type": "header",
+          "content": "t:sections.main-search.settings.header__2.content"
+        },
+		{
+          "type": "checkbox",
+          "id": "article_show_date",
+          "default": true,
+          "label": "t:sections.main-search.settings.article_show_date.label"
+        },
+		{
+          "type": "checkbox",
+          "id": "article_show_author",
+          "default": false,
+          "label": "t:sections.main-search.settings.article_show_author.label"
+        }
+	]
+}
+{% endschema %}

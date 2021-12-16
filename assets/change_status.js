@@ -3,9 +3,9 @@ $(function() {
 		// add history (ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚‚è€ƒæ…®ã€‚æ¤œç´¢ã¯pageå¯¾å¿œã—ã¦ãªã„)
 		var href = window.location.href;
 		var url = $('#base_url').val();
-		if (url.substring(url.length - 1) != '/') {
-			url = url + '/';
-		}
+		
+		url = url + '/';
+		
 		var categoryStr = href.match(/categories\/.+/);
 		if (categoryStr != null) {
 			// pageå¯¾ç­–

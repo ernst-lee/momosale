@@ -1,0 +1,84 @@
+<div style="position: relative;height: 1px;top:10px" class="mentdet">
+  <div style="position: absolute;left:0;top:20;width: 100%;">
+    <form id="x_itemSearchForm" style="text-align: center;" class="itemSearch__form" action="{{ routes.search_url }}" method="get">
+      <input 
+        class="itemSearch__field yumin" 
+        type="text" 
+        style="border: 1px solid;" 
+        name="q"
+        id="s"
+        placeholder="{{ 'general.search.search' | t }}"
+        value="{{ search.terms | escape }}"
+        >
+      <button class="itemSearch__btn" type="submit" id="gobuttoddd"><span id="x_iconSearch" class="mainHeaderNavColor icon-search"></span></button>
+    </form>
+
+  </div>
+</div>
+
+<h2 class="categoryTitle01 crim">{{- collection.title | escape -}}<span class="bar"></span></h2>
+
+{%- paginate collection.products by section.settings.products_per_page -%}
+<section id="mainContent" class="wrapper clearfix index">
+  <div class="ItemListInner crim">
+
+    {%- if collection.products.size == 0 -%}
+    <div id="paradis-law" class="area" >
+    <div id="law" style="text-align:center">
+        <h3>
+        {%- if collection.products_count == collection.all_products_count -%}
+            {{ 'sections.collection_template.product_count_simple' | t: count: collection.products_count }}
+        {%- else -%}
+            {{ 'sections.collection_template.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}
+        {%- endif -%}
+        </h3>
+    </div>
+    </div>
+    {%- else -%}
+      {%- for product in collection.products -%}
+      {% render 'main-product-card',
+      product_card_product: product
+    %}
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+{%- if paginate.pages > 1 -%}
+      {% render 'paginate', paginate: paginate, anchor: '#mainContent' %}
+{%- endif -%}
+{%- endpaginate -%}
+
+{% schema %}
+  {
+    "name": "t:sections.collection_products.name",
+    "settings": [
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "min": 6,
+        "max": 60,
+        "step": 1,
+        "default": 24,
+        "label": "t:sections.collection_products.settings.products_per_page.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.collection_products.settings.header__1.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_filtering",
+        "default": true,
+        "label": "t:sections.collection_products.settings.enable_filtering.label",
+        "info": "t:sections.collection_products.settings.enable_filtering.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sorting",
+        "default": true,
+        "label": "t:sections.collection_products.settings.enable_sorting.label"
+      }
+  	]
+  }
+{% endschema %}
+

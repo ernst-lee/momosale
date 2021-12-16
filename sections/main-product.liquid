@@ -1,0 +1,253 @@
+<script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+{{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+  
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign available = target.available | default: false
+  assign money_price = price | money
+-%}
+
+<section id="mainContent" class="wrapper clearfix item-detail">
+  
+<div class="item-detail-inner clearfix">
+    <div class="item clearfix">
+        <div class="itemImg clearfix">
+            <div class="itemImgSlide">
+                <ul id="slideImg">
+                    {%- for product_image in product.images -%}  
+                    <li
+                    {% if forloop.index != 1 %}
+                    style="display:none;"  
+                    {% endif %}
+                    >
+                        <div class="imgBox">
+                            <a href="{{ product_image | img_url:'master' }}&imformat=generic" class="ajax btn grn save" rel="group">
+                                {% if forloop.index == 1 %}
+                                {% if compare_at_price > price %}
+                                <img src="{{ 'Ribbon_sale_rd.png' | asset_url }}" class="label_image detail">
+                                {% endif %}
+                                {% endif %}
+                                <img src="{{ product_image | img_url:'master' }}&imformat=generic&amp;q=90&amp;im=Resize,width=640,type=normal"
+                                alt="{{ product.title }}" title="">
+                            </a>
+                        </div>
+                    </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+            <ul id="slideImgPager">
+                {%- for product_image in product.images -%}
+                <li>
+                    <a data-slide-index="{{ forloop.index0 }}">
+                        <div class="smallImgBox">
+                            <img src="{{ product_image | img_url:'master' }}&imformat=generic&amp;q=90&amp;im=Resize,width=300,type=normal"
+                            alt="{{ product.title }}" title="">
+                        </div>
+                    </a>
+                </li>
+                {%- endfor -%}
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    $('#slideImgPager').on('click' , 'li' , function(){
+        var index = $(this).find('a').attr('data-slide-index');
+        $('#slideImg li').css('display' , 'none');
+        $('#slideImg li:eq('+ index +')').attr('style' , '');
+    });
+    </script>
+
+    <div class="purchase">
+    
+        <h2 class="itemTitle crim">
+            {{ product.title }}
+        </h2>
+
+        <div class="itemPrice">
+            <h3 class="crim">
+                {%- if compare_at_price > price %}
+                <div class="proper">
+                    {{ compare_at_price | money_with_currency }}
+                </div>
+                <div class="sale">
+                    {{ money_price }}
+                </div>
+                <div class="discount">
+                    {{ compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round }}%OFF
+                </div>
+                {% else %}
+                <div>{{ money_price }}</div>
+                {% endif %}
+
+            </h3>
+        </div>
+
+        <div class="itemDescription yumin">
+            <p>
+                {{ product.description }}
+            </p>
+        </div>
+        
+        {%- assign product_form_id = 'product-form-' | append: section.id -%}
+        {%- form 'product' , product , id: product_form_id , class:"purchaseForm" -%}
+            
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+            <div id="itemSelect">
+
+            {%- unless product.has_only_default_variant -%}
+            <variant-selects data-section="{{ section.id }}" data-url="{{ product.url }}">
+                {%- for option in product.options_with_values -%}
+                <div id="variationSelectWrap" class="purchaseElement" >
+                    <label for="valiationSelect">
+                        {{ option.name }}
+                    </label>
+                    
+                    
+                    <select id="Option-{{ section.id }}-{{ forloop.index0 }}" class="select__select" name="options[{{ option.name | escape }}]" form="product-form-{{ section.id }}">
+                        {%- for value in option.values -%}
+                        <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                            {{ value }}
+                        </option>
+                        {%- endfor -%}
+                    </select> 
+                    
+
+                </div>
+                {% endfor %}
+                <script type="application/json">
+                    {{ product.variants | json }}
+                </script>
+            </variant-selects>
+            {%- endunless -%}
+                
+            <div id="amountSelectWrap" class="purchaseElement" >
+                <label for="amountSelect">
+                    {{ 'products.product.quantity.label' | t }}
+                </label>
+
+                <select name="quantity" id="amountSelect" class="amountSelect initialized">
+                {% for number in (1..100) %}
+                    <option value="{{ number }}">
+                        {{ number }}
+                    </option>
+                    {% endfor %}
+                </select>
+                
+            </div>
+
+            <div class="purchaseButton">
+                <style>
+                    .purchaseButton__btn[disabled] {
+                        color: white !important;
+                        background: #666 !important;
+                    }
+                </style>
+                <button 
+                        name="add"
+                        type="submit"
+                        class="purchaseButton__btn purchaseButton__btn--addToCart"
+                        style="display: block;color: #ffffff;background-color: #000000;font-size: 12px;padding: 15px 0;border: 0px;border-radius: 0px;text-align: center;cursor: pointer;width: 100%;transition-duration: 0.3s;transition-timing-function: ease-in-out;" 
+                        {% if product.selected_or_first_available_variant.available == false %}
+                        disabled
+                        {% endif %}
+                        >
+                    {%- if product.selected_or_first_available_variant.available -%}
+                    {{ 'products.product.add_to_cart' | t }}
+                    {%- else -%}
+                    {{ 'products.product.sold_out' | t }}
+                    {%- endif -%}
+                </button>
+                
+                {%- if section.settings.show_dynamic_checkout -%}
+                    {{ form | payment_button }}
+                {%- endif -%}
+                
+            </div>            
+        {%- endform -%}
+
+        {% render 'about-freight' %}
+        
+        {% if section.settings.show_share_buttons %}
+        {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product.featured_media %}
+        {% endif %}
+
+    </div> 
+</div>
+
+<hr color="white" style="margin-bottom:5%;">
+
+<product-recommendations data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=3">
+{% if recommendations.performed and recommendations.products_count > 0 %}
+<div class="relatedItems clearfix">
+    <div class="sec-ttl crim">
+        <div class="list-ttl">
+            {{ 'products.product.product_recommendations' | t }}
+            <span class="bar">
+            </span>
+        </div>
+    </div>
+    <ul style="display: flex;justify-content: space-between;flex-wrap: wrap;">
+        {% for recommendation in recommendations.products %}
+            {% render 'recommendation-product-cart',
+                product_card_product: recommendation
+            %}
+        {% endfor %}
+    </ul>
+</div>
+{%- endif -%}
+</product-recommendations>
+
+</section>
+
+{% javascript %}
+  class ProductRecommendations extends HTMLElement {
+    constructor() {
+      super();
+
+      const handleIntersection = (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+        observer.unobserve(this);
+
+        fetch(this.dataset.url)
+          .then(response => response.text())
+          .then(text => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+            const recommendations = html.querySelector('product-recommendations');
+            if (recommendations && recommendations.innerHTML.trim().length) {
+              this.innerHTML = recommendations.innerHTML;
+            }
+          })
+          .catch(e => {
+            console.error(e);
+          });
+      }
+
+      new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
+    }
+  }
+
+  customElements.define('product-recommendations', ProductRecommendations);
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "t:sections.main-product.name",
+    "settings": [
+		{
+			"type": "checkbox",
+			"id": "show_share_buttons",
+			"default": true,
+			"label": "t:sections.main-product.settings.show_share_buttons.label"
+		}
+	]
+  }
+{% endschema %}

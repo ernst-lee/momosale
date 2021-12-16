@@ -226,6 +226,22 @@
         }
       }
     },
+    "main-cart": {
+      "name": "小计",
+      "settings": {
+        "show_cart_note": {
+          "label": "启用购物车备注"
+        }
+      },
+      "blocks": {
+        "subtotal": {
+          "name": "小计价格"
+        },
+        "buttons": {
+          "name": "结账按钮"
+        }
+      }
+    },
     "home-banner": {
       "name": "主页宣传区",
       "settings": {
@@ -246,6 +262,9 @@
         }
       }
     },
+    "main-page": {
+      "name": "页面"
+    },
     "footer": {
       "name": "页脚",
       "settings": {
@@ -254,6 +273,65 @@
         },
         "footer_link": {
           "label": "页脚菜单"
+        }
+      }
+    },
+    "main-search": {
+      "name": "搜索结果",
+      "settings": {
+        "image_ratio": {
+          "label": "图片比",
+          "options__1": {
+            "label": "适应图片"
+          },
+          "options__2": {
+            "label": "纵向"
+          },
+          "options__3": {
+            "label": "方形"
+          }
+        },
+        "show_secondary_image": {
+          "label": "在悬停时显示第二张图片"
+        },
+        "add_image_padding": {
+          "label": "添加图片填充"
+        },
+        "show_vendor": {
+          "label": "显示厂商"
+        },
+        "header__1": {
+          "content": "产品卡"
+        },
+        "header__2": {
+          "content": "博客卡"
+        },
+        "article_show_date": {
+          "label": "显示日期"
+        },
+        "article_show_author": {
+          "label": "显示作者"
+        },
+        "show_image_outline": {
+          "label": "显示图片边框"
+        }
+      }
+    },
+    "collection_products": {
+      "name": "产品系列",
+      "settings": {
+        "products_per_page": {
+          "label": "每页产品数"
+        },
+        "header__1": {
+          "content": "筛选和排序"
+        },
+        "enable_filtering": {
+          "label": "启用筛选",
+          "info": "自定义 [筛选器](\/admin\/menus)"
+        },
+        "enable_sorting": {
+          "label": "启用排序"
         }
       }
     },
@@ -268,6 +346,14 @@
         },
         "banner_image_url": {
           "label": "顶部横幅链接"
+        }
+      }
+    },
+    "sb_skudebar":{
+      "name":"手机端右侧边栏菜单",
+      "settings":{
+        "skudebar_link": {
+          "label": "右侧边栏菜单"
         }
       }
     },

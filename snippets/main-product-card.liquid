@@ -1,0 +1,20 @@
+<div class="item">
+    <div class="itemImg">
+      <a href="{{ product_card_product.url | default: '#' }}">
+        {%- if product_card_product.compare_at_price > product_card_product.price and product_card_product.available -%}
+        <img src="{{ 'Ribbon_sale_rd.png' | asset_url }}" class="label_image list">  
+        {%- endif -%}
+        <div class="itemThumbImg">
+          <img src="{{ product_card_product.featured_media | img_url:"640x640" }}"
+           alt="{{ product_card_product.title }}" 
+           title="{{ product_card_product.title }}" class="image-resize">
+        </div>
+      </a>
+    </div>
+    <a href="{{ product_card_product.url | default: '#' }}">
+      <div class="itemTitle crim">
+        <h2>{{ product_card_product.title }}</h2>
+      </div>
+      {% render 'price', product: product_card_product %}
+    </a>
+</div>

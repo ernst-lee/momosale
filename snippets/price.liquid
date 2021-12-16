@@ -1,0 +1,36 @@
+{% comment %}
+    Renders a list of product's price (regular, sale)
+
+    Accepts:
+    - product: {Object} Product Liquid object (optional)
+    - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
+
+    Usage:
+    {% render 'price', product: product %}
+{% endcomment %}
+{%- liquid
+    if use_variant
+      assign target = product.selected_or_first_available_variant
+    else
+      assign target = product
+    endif
+    
+    assign compare_at_price = target.compare_at_price
+    assign price = target.price | default: 1999
+    assign available = target.available | default: false
+    assign money_price = price | money
+-%}
+{%- if compare_at_price > price and available %}
+<ul class="itemDetail">
+    <li class="itemPrice crim">
+      <div class="sale">{{ money_price }}</div>
+      <div class="discount">{{ compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round }}%OFF</div>
+    </li>
+</ul>
+{% else %}
+<ul class="itemDetail">
+    <li class="itemPrice crim">
+      <div>{{ money_price }}</div>
+    </li>
+</ul>
+{% endif -%}

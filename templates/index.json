@@ -11,7 +11,7 @@
       "type": "home-product",
       "settings": {
         "collection": "all",
-        "products_per_page": 24
+        "products_per_page": 6
       }
     }
   },

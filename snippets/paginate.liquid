@@ -13,40 +13,136 @@
 {% endcomment %}
 
 {%- if paginate.parts.size > 0 -%}
-	<div id="more" class="col s12 relative_on pc-only">
-      
-     {%- if paginate.previous -%}
-      <a href="{{ paginate.previous.url }}{{ anchor }}">
-        <img src="{{ 'left.png' | asset_url }}" style="width:30%">
-      </a>
-      {%- endif -%}
-      <span>&nbsp;</span>
-      {%- if paginate.next -%}
-      <a href="{{ paginate.next.url }}{{ anchor }}">
-        <img src="{{ 'right.png' | asset_url }}" style="width:30%">
-      </a>
-      {%- endif -%}
-    </div>
+<style>
+#more {
+	width:100%;
+	text-align:center
+}
+#more a {
+	display:inline-block;
+	background-color:#EF9A9A;
+	color:#fff;
+	border-style:none;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	padding:8px 20px;
+	width:140px;
+	margin:0 auto;
+	line-height:normal;
+	height:inherit;
+	-webkit-transition:all 0.3s;
+	-moz-transition:all 0.3s;
+	-o-transition:all 0.3s
+}
+@media (max-width:600px) {
+	#more a {
+	display:block;
+	padding:12px 20px;
+	width:auto;
+	margin:5px 10px
+}
+#price-and-purchase #more a {
+	padding:12px 0;
+	margin:5px 0
+}
+}
+#more a:hover {
+	opacity:0.8;
+	-webkit-transition:all 0.3s;
+	-moz-transition:all 0.3s;
+	-o-transition:all 0.3s
+}
+.relative_on {
+	position:relative !important
+}
+@media (max-width:992px) {
+	.mobile-and-tablet-only {
+		display:block
+	}
+	.pc-only {
+		display:none
+	}
+}
+@media (min-width:993px) {
+	.mobile-and-tablet-only {
+		display:none
+	}
+	.pc-only {
+		display:block
+	}
+}
+.clearfix:after {
+	content:"";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden
+}
+.clearfix {
+	zoom:1
+}
+#more img {
+    margin-top: 4%;
+    padding: 0;
+    border: 0;
+    border-style: none;
+    text-decoration: none;
+    vertical-align: top;
+}
+@media (max-width:992px) {
+.top-banner-l {
+        display: block;
+        float: left;
+        width: 50%;
+        padding: 0 5px 0 10px;
+        margin: 10px auto 0;
+        text-align: center;
+    }
+	.top-banner-r {
+        display: block;
+        float: left;
+        width: 50%;
+        padding: 0 10px 0 5px;
+        margin: 10px auto 0;
+        text-align: center;
+    }
+}
+</style>
+<div id="more" class="col s12 relative_on pc-only">
+	
+	{%- if paginate.previous -%}
+	<a href="{{ paginate.previous.url }}{{ anchor }}">
+	<img src="{{ 'left.png' | asset_url }}" style="width:30%">
+	</a>
+	{%- endif -%}
+	<span>&nbsp;</span>
+	{%- if paginate.next -%}
+	<a href="{{ paginate.next.url }}{{ anchor }}">
+	<img src="{{ 'right.png' | asset_url }}" style="width:30%">
+	</a>
+	{%- endif -%}
+</div>
     
 
-    <div id="more" class="col s12 relative_on mobile-and-tablet-only" style="text-align:center">
-      <div class="mobile-and-tablet-only clearfix">
+<div id="more" class="col s12 relative_on mobile-and-tablet-only" style="text-align:center">
+	<div class="mobile-and-tablet-only clearfix">
 
-        <div class="top-banner-l">
-          {%- if paginate.previous -%}
-          <a href="{{ paginate.previous.url }}{{ anchor }}">
-            <img src="{{ 'left.png' | asset_url }}" style="width:30%">
-          </a>
-          {%- endif -%}
-        </div>
+	<div class="top-banner-l">
+		{%- if paginate.previous -%}
+		<a href="{{ paginate.previous.url }}{{ anchor }}">
+		<img src="{{ 'left.png' | asset_url }}" style="width:30%">
+		</a>
+		{%- endif -%}
+	</div>
 
-        <div class="top-banner-r">
-          {%- if paginate.next -%}
-          <a href="{{ paginate.next.url }}{{ anchor }}">
-            <img src="{{ 'right.png' | asset_url }}" style="width:30%">
-          </a>
-          {%- endif -%}
-        </div>
-     </div>
-    </div>
+	<div class="top-banner-r">
+		{%- if paginate.next -%}
+		<a href="{{ paginate.next.url }}{{ anchor }}">
+		<img src="{{ 'right.png' | asset_url }}" style="width:30%">
+		</a>
+		{%- endif -%}
+	</div>
+	</div>
+</div>
 {%- endif -%}
