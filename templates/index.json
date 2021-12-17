@@ -3,10 +3,6 @@
     "home_banber": {
       "type": "home-banner",
       "settings": {
-        "top_banner": "shopify:\/\/shop_images\/5c276da8c125fe0afabffb3f2f21f18b.jpg",
-        "main_menu": "show-category",
-        "buttom_banner": "shopify:\/\/shop_images\/image-bnr_5eef6b0a86226.jpg",
-        "buttom_banner_url": ""
       }
     },
     "main_product": {
